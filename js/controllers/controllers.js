@@ -32,6 +32,28 @@ HegelControllers.controller('SubjectController', function ($scope, $http, $locat
       return;
     }
 
+
+       $http({
+           method: "POST",
+           url: "/api/Idea",
+           data: {
+                   "idea" : subject,
+                   "negative": not,
+                   "doublenegative": "",
+                   "synthesis": "",
+                   "tense" : isare
+            }
+        }).success(function(data, status, headers, config) {
+              console.log("object" + data);
+              for (d in data){
+                console.log(d + data[d]);
+                var id = data["id"];
+                console.log("id: " + data["id"]);
+              }
+              
+});
+
+
     //push Subject values to array
     notnots.push({
       subject: subject,
